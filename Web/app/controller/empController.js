@@ -9,7 +9,7 @@ app.controller("empCtrl", function ($scope, $location, $http, eHRSettings) {
 
     vm.loadData = function () {
         vm.viewMode = 'data-loading';
-        var url = eHRSettings.baseUri + "Employee";
+        var url = eHRSettings.baseUri + "Employee?$expand=Department";
         $http.get(url)
         .success(function (response) {
             if (response.value != undefined && response.value.length > 0) {
