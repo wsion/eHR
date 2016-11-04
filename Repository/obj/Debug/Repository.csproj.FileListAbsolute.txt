@@ -1,0 +1,9 @@
+D:\Github\eHR\eHR\Repository\bin\Debug\eHR.Repository.dll.config
+D:\Github\eHR\eHR\Repository\bin\Debug\eHR.Repository.dll
+D:\Github\eHR\eHR\Repository\bin\Debug\eHR.Repository.pdb
+D:\Github\eHR\eHR\Repository\bin\Debug\EntityFramework.dll
+D:\Github\eHR\eHR\Repository\bin\Debug\EntityFramework.SqlServer.dll
+D:\Github\eHR\eHR\Repository\bin\Debug\EntityFramework.xml
+D:\Github\eHR\eHR\Repository\bin\Debug\EntityFramework.SqlServer.xml
+D:\Github\eHR\eHR\Repository\obj\Debug\eHR.Repository.dll
+D:\Github\eHR\eHR\Repository\obj\Debug\eHR.Repository.pdb

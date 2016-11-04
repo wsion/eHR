@@ -1,0 +1,44 @@
+﻿<div ng-controller="empCtrl as vm">
+    <div class="text-center" ng-if="vm.viewMode=='no-data'">
+        No Data
+    </div>
+    <div class="text-center" ng-if="vm.viewMode=='data-loading'">
+        Loading...
+    </div>
+    <div class="text-center" ng-if="vm.viewMode=='data-loaded'">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center">
+                        ID
+                    </th>
+                    <th class="text-center">
+                        Name
+                    </th>
+                    <th class="text-center">
+                        Phone
+                    </th>
+                    <th class="text-center">
+                        Gender
+                    </th>
+                    <th class="text-center">
+                        BirthDate
+                    </th>
+                    <th class="text-center">
+                        Department
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in vm.DataSet">
+                    <td ng-bind="item.ID"></td>
+                    <td ng-bind="item.Name"></td>
+                    <td ng-bind="item.Phone"></td>
+                    <td ng-bind="item.Sex?'Male':'Female'"></td>
+                    <td ng-bind="item.BirthDate|date"></td>
+                    <td ng-bind="item.DepartmentID"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

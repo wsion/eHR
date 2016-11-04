@@ -1,0 +1,61 @@
+﻿USE master
+GO
+
+IF DB_ID('eHR') IS NOT NULL
+	DROP DATABASE eHR
+GO
+
+CREATE DATABASE eHR
+GO
+
+USE eHR
+GO
+
+IF OBJECT_ID('Department') IS NOT NULL
+	DROP TABLE Department
+GO
+
+CREATE TABLE Department(
+ID INT PRIMARY KEY IDENTITY(1,1),
+NAME NVARCHAR(20)
+)
+GO
+
+INSERT INTO 
+		dbo.Department
+SELECT 'QC' UNION
+SELECT 'HR' UNION
+SELECT 'Development' UNION
+SELECT 'Data Analyzer'
+
+IF OBJECT_ID('Employee') IS NOT NULL
+	DROP TABLE Employee
+GO
+
+CREATE TABLE Employee(
+ID INT PRIMARY KEY IDENTITY(1,1),
+Name NVARCHAR(10),
+Phone NVARCHAR(11),
+Sex BIT, --1: male ; 0: female
+BirthDate DATETIME,
+DepartmentID INT,
+Note NVARCHAR(500),
+CONSTRAINT FK_DEPT FOREIGN KEY (DepartmentId) REFERENCES Department (ID)
+)
+GO
+
+INSERT INTO dbo.Employee
+(
+	Name ,
+	Phone ,
+	Sex ,
+	BirthDate ,
+	DepartmentID ,
+	Note
+)
+SELECT 'Test', '13688212210', 1, '1987-02-01',1,'' UNION
+SELECT 'Test2', '13688212211', 1, '1988-02-01',2,'' UNION
+SELECT 'Test3', '13688212212', 1, '1989-02-01',3,'' UNION
+SELECT 'Test4', '13688212213', 1, '1982-02-01',1,'' UNION
+SELECT 'Test5', '13688212214', 1, '1983-02-01',2,''
+GO (5)
