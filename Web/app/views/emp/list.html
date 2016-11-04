@@ -1,44 +1,72 @@
 ﻿<div ng-controller="empCtrl as vm">
-    <div class="text-center" ng-if="vm.viewMode=='no-data'">
+    <div class="text-center" ng-if="vm.ViewMode=='no-data'">
         No Data
     </div>
-    <div class="text-center" ng-if="vm.viewMode=='data-loading'">
+    <div class="text-center" ng-if="vm.ViewMode=='data-loading'">
         Loading...
     </div>
-    <div class="text-center" ng-if="vm.viewMode=='data-loaded'">
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th class="text-center">
-                        ID
-                    </th>
-                    <th class="text-center">
-                        Name
-                    </th>
-                    <th class="text-center">
-                        Phone
-                    </th>
-                    <th class="text-center">
-                        Gender
-                    </th>
-                    <th class="text-center">
-                        BirthDate
-                    </th>
-                    <th class="text-center">
-                        Department
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="item in vm.DataSet">
-                    <td ng-bind="item.ID"></td>
-                    <td ng-bind="item.Name"></td>
-                    <td ng-bind="item.Phone"></td>
-                    <td ng-bind="item.Sex?'Male':'Female'"></td>
-                    <td ng-bind="item.BirthDate|date"></td>
-                    <td ng-bind="item.Department.NAME"></td>
-                </tr>
-            </tbody>
-        </table>
+    <div ng-if="vm.ViewMode=='data-loaded'">
+        <!--<div>
+            <nav aria-label="Page navigation pull-left">
+                <ul class="pagination">
+                    <li ng-repeat="item in vm.PageSizes">
+                        <a href="javascript:void(0)" ng-bind="item" ng-click="vm.OnPageSizeChange(item)">
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>-->
+        <div>
+            <nav aria-label="Page navigation pull-left">
+                <ul class="pagination">
+                    <li ng-repeat="i in vm.PageRange track by $index">
+                        <a href="javascript:void(0)" ng-bind="$index + 1" ng-click="vm.OnPageSizeChange($index + 1)">
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="pull-left">
+                <span ng-bind="vm.CurrentPage"></span>
+                of
+                <span ng-bind="vm.PageCount"></span>
+            </div>
+        </div>
+        <div>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            ID
+                        </th>
+                        <th class="text-center">
+                            Name
+                        </th>
+                        <th class="text-center">
+                            Phone
+                        </th>
+                        <th class="text-center">
+                            Gender
+                        </th>
+                        <th class="text-center">
+                            BirthDate
+                        </th>
+                        <th class="text-center">
+                            Department
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in vm.DataSet">
+                        <td ng-bind="item.ID"></td>
+                        <td ng-bind="item.Name"></td>
+                        <td ng-bind="item.Phone"></td>
+                        <td ng-bind="item.Sex?'Male':'Female'"></td>
+                        <td ng-bind="item.BirthDate|date"></td>
+                        <td ng-bind="item.Department.NAME"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
