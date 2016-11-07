@@ -1,4 +1,5 @@
-﻿app.filter("gender", function () {
+﻿'use strict';
+app.filter("gender", function () {
     return function (sourceVal) {
         if (sourceVal === undefined) {
             return "";

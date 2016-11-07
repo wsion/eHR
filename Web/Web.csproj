@@ -127,6 +127,7 @@
     <Content Include="app\controller\deptController.js" />
     <Content Include="app\controller\empController.js" />
     <Content Include="app\controller\navController.js" />
+    <Content Include="app\filters\genderFilter.js" />
     <Content Include="app\views\dept\list.html" />
     <Content Include="app\views\emp\list.html" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -968,7 +969,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\directives\" />
-    <Folder Include="app\filters\" />
     <Folder Include="app\modules\" />
     <Folder Include="app\services\" />
     <Folder Include="app\test\" />
