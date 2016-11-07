@@ -54,6 +54,8 @@
                         <th class="text-center">
                             Department
                         </th>
+                        <th>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,6 +66,7 @@
                         <td ng-bind="item.Sex|gender"></td>
                         <td ng-bind="item.BirthDate|date"></td>
                         <td ng-bind="item.Department.NAME"></td>
+                        <td class="text-center"> <button type="button" class="btn btn-danger" ng-click="vm.DeleteItem(item.ID)">Delete</button> </td>
                     </tr>
                 </tbody>
             </table>

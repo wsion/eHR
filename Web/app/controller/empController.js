@@ -139,6 +139,7 @@ app.controller("empCtrl", function ($scope, $location, $http, eHRSettings) {
         return page == vm.CurrentPage;
     };
 
+
     //Filter
     vm.ApplyFilter = function () {
         if (event.key == "Enter") {
@@ -153,6 +154,24 @@ app.controller("empCtrl", function ($scope, $location, $http, eHRSettings) {
         }
     };
     initilizeFilter();
+
+
+    //Deletion
+    vm.DeleteItem = function (id) {
+        if (!confirm("Are you sure to delete this item?")) {
+            return;
+        }
+
+        var url = eHRSettings.baseUri + "Employee(" + id + ")";
+        $http.delete(url)
+        .success(function () {
+            console.log("Deletion success");
+            loadData();
+        })
+        .error(function () {
+            console.warn("Deletion failure");
+        });
+    };
 
     console.log($scope);
 });
