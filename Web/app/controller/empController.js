@@ -15,10 +15,18 @@ app.controller("empCtrl", function ($scope, $location, $http, eHRSettings) {
 
 
     //Data loading
-    vm.loadData = function () {
+    var buildUrl = function () {//todo:pagination, $top=1&$skip=1
+        var top = vm.PageSize;
+        var skip = vm.PageSize * (vm.CurrentPage - 1);
+        var url = eHRSettings.baseUri
+            + "Employee?$expand=Department&$inlinecount=allpages"
+            + "&$top=" + top + "&$skip=" + skip;
+        return url;
+    }
+
+    var loadData = function () {
         vm.ViewMode = 'data-loading';
-        var url = eHRSettings.baseUri + "Employee?$expand=Department&$inlinecount=allpages"; //todo:pagination, $top=1&$skip=1
-        $http.get(url)
+        $http.get(buildUrl())
         .success(function (response) {
             if (response.value != undefined && response.value.length > 0) {
                 vm.DataSet = response.value;
@@ -35,14 +43,17 @@ app.controller("empCtrl", function ($scope, $location, $http, eHRSettings) {
             vm.ViewMode = 'no-data';
         });
     };
-    vm.loadData();
+    loadData();
 
 
     //Page size 
     vm.OnPageSizeChange = function (size) {
-        if (vm.PageSizes.indexOf(size) > -1) {
+        if (size == vm.PageSize) {
+            return;
+        } else if (vm.PageSizes.indexOf(size) > -1) {
             vm.PageSize = size;
-            vm.loadData();
+            vm.CurrentPage = 1;
+            loadData();
         }
     };
 
@@ -94,7 +105,7 @@ app.controller("empCtrl", function ($scope, $location, $http, eHRSettings) {
             return;
         } else {
             vm.CurrentPage = page;
-            vm.loadData();
+            loadData();
         }
     };
 
@@ -116,12 +127,12 @@ app.controller("empCtrl", function ($scope, $location, $http, eHRSettings) {
 
     vm.FirstPage = function () {
         vm.CurrentPage = 1;
-        vm.loadData();
+        loadData();
     };
 
     vm.LastPage = function () {
         vm.CurrentPage = vm.PageCount;
-        vm.loadData();
+        loadData();
     };
 
     vm.IsCurrentPage = function (page) {
