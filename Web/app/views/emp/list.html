@@ -6,6 +6,9 @@
         Loading...
     </div>
     <div ng-if="vm.ViewMode=='data-loaded'">
+        <div class="form-inline" style="margin:5px 0;">
+            Text Filter: <input type="text" class="form-control" ng-model="vm.keyword" ng-keypress="vm.ApplyFilter()" /> <span ng-hide="vm.filtered.length==vm.DataSet.length">({{vm.filtered.length}} record(s))</span>
+        </div>
         <div>
             <div class="pull-left">
                 <nav aria-label="...">
@@ -23,7 +26,7 @@
                 of
                 <span ng-bind="vm.PageCount"></span>
                 page(s) &nbsp;&nbsp;
-                page size: 
+                page size:
                 <span ng-repeat="item in vm.PageSizes">
                     <a href="javascript:void(0)" title="Per page size" ng-click="vm.OnPageSizeChange(item)" ng-class="vm.IsActivePageSize(item)?'active':''">{{item}}</a>&nbsp;
                 </span>
@@ -54,11 +57,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in vm.DataSet">
+                    <tr ng-repeat="item in vm.filtered=(vm.DataSet|filter:vm.filterKeyword)">
                         <td ng-bind="item.ID"></td>
                         <td ng-bind="item.Name"></td>
                         <td ng-bind="item.Phone"></td>
-                        <td ng-bind="item.Sex?'Male':'Female'"></td>
+                        <td ng-bind="item.Sex|gender"></td>
                         <td ng-bind="item.BirthDate|date"></td>
                         <td ng-bind="item.Department.NAME"></td>
                     </tr>

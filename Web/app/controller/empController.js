@@ -7,12 +7,12 @@ app.controller("empCtrl", function ($scope, $location, $http, eHRSettings) {
     //Variable declaration and initialization
     vm.DataSet = [];
     vm.PageSizes = [2, 5, 10, 20];
-    vm.PageSize = vm.PageSizes[0];
+    vm.PageSize = vm.PageSizes[1];
     vm.PageCount = 0;
     vm.CurrentPage = 1;
     vm.PageRange = [];
     vm.ViewMode = 'no-data';
-
+    
 
     //Data loading
     var buildUrl = function () {//todo:pagination, $top=1&$skip=1
@@ -138,6 +138,21 @@ app.controller("empCtrl", function ($scope, $location, $http, eHRSettings) {
     vm.IsCurrentPage = function (page) {
         return page == vm.CurrentPage;
     };
+
+    //Filter
+    vm.ApplyFilter = function () {
+        if (event.key == "Enter") {
+            vm.filterKeyword = vm.keyword;
+            localStorage["filter"] = vm.keyword;
+        }
+    }
+
+    var initilizeFilter = function () {
+        if (!!localStorage && typeof localStorage["filter"] != "undefined") {
+            vm.filterKeyword = vm.keyword = localStorage["filter"];
+        }
+    };
+    initilizeFilter();
 
     console.log($scope);
 });
