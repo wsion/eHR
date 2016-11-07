@@ -21,3 +21,11 @@ select,
 textarea {
     max-width: 280px;
 }
+
+a.active{
+    color:#f00;
+}
+
+.pagination{
+    margin:0;
+}
