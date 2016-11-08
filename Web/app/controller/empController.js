@@ -172,6 +172,4 @@ app.controller("empCtrl", function ($scope, $location, $http, eHRSettings) {
             console.warn("Deletion failure");
         });
     };
-
-    console.log($scope);
 });

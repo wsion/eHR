@@ -1,7 +1,4 @@
 ﻿using eHR.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web.Http;
 using System.Web.Http.OData.Builder;
 
@@ -21,6 +18,8 @@ namespace eHR.WebAPI
             //    routeTemplate: "api/{controller}/{id}",
             //    defaults: new { id = RouteParameter.Optional }
             //);
+
+            config.MessageHandlers.Add(new PreflightRequestsHandler());
 
             ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
             builder.EntitySet<Department>("Department");
