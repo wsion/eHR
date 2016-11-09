@@ -19,7 +19,7 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    /*max-width: 280px;*/
 }
 
 a.active{
@@ -28,4 +28,18 @@ a.active{
 
 .pagination{
     margin:0;
+}
+
+.form-control.ng-invalid {
+    padding-left:0;
+    border:solid 1px #f00;
+    border-left-width:13px;
+}
+
+.form-group div.ng-invalid{
+    color:#f00;
+}
+
+select.ng-invalid{
+    color:#888;
 }

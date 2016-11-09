@@ -17,9 +17,11 @@
 
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/angular-route.js"></script>
+    <script src="~/Scripts/angular-messages.min.js"></script>
     <script src="~/app/app.js"></script>
     <script src="~/app/filters/genderFilter.js"></script>
     <script src="~/app/controller/empController.js"></script>
+    <script src="~/app/controller/empAddController.js"></script>
     <script src="~/app/controller/navController.js"></script>
 </head>
 <body ng-app="eHR">
@@ -46,7 +48,7 @@
                             <li><a href="#/employee/add">Add</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown hidden">
                         <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Department<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#/department">View</a></li>

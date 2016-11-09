@@ -31,7 +31,7 @@ app.controller("empCtrl", function ($scope, $location, $http, eHRSettings) {
             if (response.value != undefined && response.value.length > 0) {
                 vm.DataSet = response.value;
                 vm.ViewMode = 'data-loaded';
-                vm.PageCount = Math.round(response["odata.count"] / vm.PageSize);
+                vm.PageCount = Math.ceil(response["odata.count"] / vm.PageSize);
                 if (response["odata.count"] == 0) {
                     vm.ViewMode = 'no-data';
                     return;

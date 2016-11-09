@@ -125,10 +125,12 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controller\deptController.js" />
+    <Content Include="app\controller\empAddController.js" />
     <Content Include="app\controller\empController.js" />
     <Content Include="app\controller\navController.js" />
     <Content Include="app\filters\genderFilter.js" />
     <Content Include="app\views\dept\list.html" />
+    <Content Include="app\views\emp\add.html" />
     <Content Include="app\views\emp\list.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

@@ -17,8 +17,12 @@ namespace eHR.WebAPI
             {
                 var response = new HttpResponseMessage { StatusCode = HttpStatusCode.OK };
                 // Define and add values to variables: origins, headers, methods (can be global)               
-                // Headers added by Web.config
-                //response.Headers.Add("Access-Control-Allow-Methods", request.Headers.GetValues("Access-Control-Request-Method"));
+                // Requisite headers partially added by Web.config
+                if (request.Headers.Contains("Access-Control-Request-Headers"))
+                {
+                    var acrh = request.Headers.GetValues("Access-Control-Request-Headers");
+                    response.Headers.Add("Access-Control-Allow-Headers", acrh);
+                }
                 var tsc = new TaskCompletionSource<HttpResponseMessage>();
                 tsc.SetResult(response);
                 return tsc.Task;

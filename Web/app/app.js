@@ -10,6 +10,9 @@ app.config(function ($routeProvider) {
     .when("/employee", {
         templateUrl: "/app/views/emp/list.html"
     })
+    .when("/employee/add", {
+        templateUrl: "/app/views/emp/add.html"
+    })
     .when("/department", {
         templateUrl: "/app/views/dept/list.html"
     })

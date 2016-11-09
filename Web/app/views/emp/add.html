@@ -1,0 +1,61 @@
+﻿<div ng-controller="empAddCtrl as vm">
+    <form name="vm.mainForm" novalidate="novalidate" ng-submit="vm.OnSubmit()">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" ng-model="vm.Name" class="form-control" placeholder="Name" required ng-minlength="2" ng-maxlength="10" />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Gender</label>
+                    <div ng-class="vm.Gender==undefined?'ng-invalid':'ng-valid'">
+                        <input type="radio" class="form-check-input" ng-model="vm.Gender" value="TRUE" required />Male
+                        <input type="radio" class="form-check-input" ng-model="vm.Gender" value="FALSE" required />Female
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" ng-model="vm.Phone" class="form-control" placeholder="Phone Number" required ng-minlength="11" ng-maxlength="11" ng-pattern="/^\d{11}$/" />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Birthday</label>
+                    <input type="date" ng-model="vm.BirthDate" class="form-control" placeholder="Birthday" required />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Department</label>
+                    <select ng-model="vm.DepartmentID" ng-options="item.ID as item.NAME for item in vm.departments" class="form-control" required>
+                        <option value="">Select department</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label>Note</label>
+                    <textarea class="form-control" ng-model="vm.Note" ng-maxlength="500"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <button type="submit" class="btn btn-primary" ng-disabled="vm.mainForm.$invalid">Submit</button>
+            </div>
+        </div>
+        <div class="hidden">
+            <pre> {{vm | json}} </pre>
+        </div>
+    </form>
+</div>
